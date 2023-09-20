@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ShoppingApp</string>
+    <string name="test">Example shop item</string>
+    <string name="test_count">10</string>
+    <string name="shop_item_label">Name</string>
+    <string name="shop_item_sum_label">Sum</string>
+    <string name="add_btn">Add</string>
+    <string name="no_items_text">Press \"Add\" to create new shopping item!</string>
+    <string name="add_new_shopping_item_button">Add new shopping item</string>
+    <string name="name_title">Name</string>
+    <string name="sum_title">Sum</string>
+    <string name="save_title">Save</string>
+    <string name="add_title">Add</string>
+    <string name="edit_title">Edit</string>
+    <string name="delete_title">Delete</string>
+    <string name="title_top">Shopping list</string>
+</resources>
