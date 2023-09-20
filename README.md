@@ -2,8 +2,8 @@
 Shopping app: simple app for creating a shopping list
 
 # Using:
-# -Jetpack Compose
-# -Dagger hilt
-# -Navigation
-# -Room
-# -MVI
+#1 -Jetpack Compose
+#1 -Dagger hilt
+#1 -Navigation
+#1 -Room
+#1 -MVI
