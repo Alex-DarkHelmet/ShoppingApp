@@ -38,7 +38,7 @@ fun NoShopItemView(
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = ShoppingTheme.colors.primaryBackground
+                    containerColor = ShoppingTheme.colors.surfaceColor
                 ),
                 modifier = Modifier.fillMaxWidth(),
                 title = {

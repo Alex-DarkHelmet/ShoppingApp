@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -44,7 +45,7 @@ class DetailsViewModel @Inject constructor(
     }
 
     private fun updateName(inputName: String) {
-        _shopItemState.update {
+        _shopItemState.updateAndGet {
             it.copy(
                 name = inputName
             )
@@ -52,9 +53,18 @@ class DetailsViewModel @Inject constructor(
     }
 
     private fun updateSum(inputSum: String) {
-        _shopItemState.update {
+        _shopItemState.updateAndGet {
             it.copy(
                 sum = inputSum,
+            )
+        }
+    }
+
+    private fun deleteCurrentValueFromUi() {
+        _shopItemState.update {
+            it.copy(
+                name = "",
+                sum = ""
             )
         }
     }
@@ -86,15 +96,6 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
-    private fun deleteCurrentValueFromUi() {
-        _shopItemState.update {
-            it.copy(
-                name = "",
-                sum = ""
-            )
-        }
-    }
-
     private fun addShopItem(currentItem: DetailsViewState) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -104,6 +105,7 @@ class DetailsViewModel @Inject constructor(
                         sum = currentItem.sum
                     ).mapToShopItemDbModel()
                 )
+                deleteCurrentValueFromUi()
             }
         }
     }
@@ -119,6 +121,7 @@ class DetailsViewModel @Inject constructor(
                             sum = currentItem.sum
                         ).mapToShopItemDbModel()
                     )
+                    deleteCurrentValueFromUi()
                 }
             }
         }
@@ -132,6 +135,7 @@ class DetailsViewModel @Inject constructor(
                 } else {
                     addShopItem(currentItem)
                 }
+                deleteCurrentValueFromUi()
             }
         }
     }
@@ -146,8 +150,8 @@ class DetailsViewModel @Inject constructor(
                         sum = currentItem.sum
                     ).mapToShopItemDbModel()
                 )
+                deleteCurrentValueFromUi()
             }
         }
-        deleteCurrentValueFromUi()
     }
 }
